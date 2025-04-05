@@ -1,19 +1,15 @@
 var btn = document.querySelector('button')
-var percent = document.querySelector('#percent')
-var growth = document.querySelector('#growth')
-var grow = 0
-
+var body = document.body
 btn.addEventListener('click',function(){
+    var img = document.createElement('img')
 
-    var int = setInterval(function(){
-        ++grow
-        percent.innerHTML = grow+'%'
-        growth.style.width = grow+'%'
-    },30)
+    var x = Math.random()*100
+    var y = Math.random()*100
+    var rot = Math.random()*360
+    img.style.left = x+'%'
+    img.style.top = y+'%'
+    img.style.rotate = rot+'deg'
 
-    setTimeout(function(){
-        clearInterval(int)
-        btn.style.opacity = 0.5
-        btn.innerHTML = 'Downloaded'
-    },3000)
+    img.setAttribute('src','https://www.freeiconspng.com/uploads/spongebob-cartoon-png-32.png')
+    body.appendChild(img)
 })
