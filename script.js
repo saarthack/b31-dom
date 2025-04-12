@@ -7,7 +7,7 @@ const users = [
         company: "Stark Industries",
         skills: ["AI", "Robotics", "Electronics", "Quantum Physics", "Cybersecurity", "CAD", "Nanotech"],
         description: "Genius engineer with a flair for innovation and sarcasm.",
-        profilePhoto: "https://example.com/profiles/tony.jpg"
+        profilePhoto: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Robert_Downey%2C_Jr._2012.jpg/1200px-Robert_Downey%2C_Jr._2012.jpg"
     },
     {
         fullName: "Bruce Banner",
@@ -17,7 +17,7 @@ const users = [
         company: "Avengers Research Labs",
         skills: ["Gamma Radiation", "Theoretical Physics", "AI", "Machine Learning", "Lab Automation"],
         description: "Mild-mannered scientist with a powerful alter ego.",
-        profilePhoto: "https://example.com/profiles/bruce.jpg"
+        profilePhoto: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Mark_Ruffalo_as_%22Professor_Hulk%22.jpeg/250px-Mark_Ruffalo_as_%22Professor_Hulk%22.jpeg"
     },
     {
         fullName: "Shuri",
@@ -37,7 +37,7 @@ const users = [
         company: "Daily Bugle (Part-time)",
         skills: ["Web Development", "Photography", "AI", "Physics", "JavaScript", "Spider-Tech"],
         description: "Young genius balancing code and crime-fighting.",
-        profilePhoto: "https://example.com/profiles/peter.jpg"
+        profilePhoto: "https://static1.moviewebimages.com/wordpress/wp-content/uploads/2022/05/Spider-Man-Far-From-Home-Tom-Holland-as-Peter-ParkerSpider-Man.jpg"
     },
     {
         fullName: "Reed Richards",
@@ -109,7 +109,7 @@ users.forEach(function(elem,idx){
         ${elem.available?'<button>available</button>':'<h1></h1>'}
         <h3>$${elem.fees}/hr</h3>
     </div>
-    <img src="https://variety.com/wp-content/uploads/2013/06/deadpool-trailer-2.jpg?w=1000" alt="">
+    <img src="${elem.profilePhoto}" alt="">
     <h2 class="name">
         ${elem.fullName}
     </h2>
@@ -127,13 +127,28 @@ users.forEach(function(elem,idx){
     </div>
 
     <p>${elem.description}</p>
-    <button>View Profile</button>
+    <button id=${idx}>View Profile</button>
 </div>`
 })
+
 
 var main = document.querySelector('#main')
 
 main.innerHTML = sum
 
+var full = document.querySelector('#full')
+var fullImg = document.querySelector('#full img')
+var fullname = document.querySelector('#full h1')
 
+main.addEventListener('click',function(dets){
+    var gold = users[dets.target.id]
 
+    full.style.display = 'flex'
+    fullImg.src = gold.profilePhoto
+    fullname.innerHTML = gold.fullName
+
+})
+
+document.querySelector('#close').addEventListener('click',function(){
+    full.style.display = 'none'
+})
